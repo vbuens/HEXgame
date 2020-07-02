@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title> HEX Coding Game </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class ="container">
+      <h1> Can you guess the HEX Code?</h1>
+      <div class ="container">
+
+        <div class="row">
+          <div id="hexCode"></div>
+          <div class ="col-sm-3 col-md-3">
+            <div id="first"></div>
+          </div>
+          <div class="col-sm-3 col-md-3"
+            <div id="second"></div>
+          </div>
+        </div>
+        <script>
+
+          correctRandomHex = '#' + Math.floor(Math.random() * 16777215).toString(16);
+          incorrectRandomHex = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+          document.getElementById("hexCode").innerHTML = correctRandomHex
+
+          let correctColor = Math.floor(Math.random()*2);
+
+          if (correctColor == 1){
+            document.getElementById("first").style.backgroundColor = correctRandomHex;
+            document.getElementById("second").style.backgroundColor = incorrectRandomHex;
+            document.getElementById("first").addEventListener("click",function(){alert("Correct!")});
+            document.getElementById("second").addEventListener("click",function(){alert("Incorrect!")});
+          }
+          else{
+              document.getElementById("second").style.backgroundColor = incorrectRandomHex;
+              document.getElementById("first").style.backgroundColor = correctRandomHex;
+              document.getElementById("second").addEventListener("click",function(){alert("Correct!")});
+              document.getElementById("first").addEventListener("click",function(){alert("Incorrect!")});
+          }
+        </script>
+
+        <button type="button" class="btn btn-success" onClick="refreshGame()">Play again!</button>
+        <script>
+          function refreshGame(){
+              window.location.reload();
+          }
+        </script>
+
+      </div>
+    </div>
+  </body>
+</html>
